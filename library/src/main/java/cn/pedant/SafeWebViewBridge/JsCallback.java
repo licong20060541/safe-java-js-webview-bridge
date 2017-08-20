@@ -39,17 +39,17 @@ public class JsCallback {
         for (Object arg : args){
             sb.append(",");
             boolean isStrArg = arg instanceof String;
-            if (isStrArg) {
+            if (isStrArg) { // string value before "
                 sb.append("\"");
             }
             sb.append(String.valueOf(arg));
-            if (isStrArg) {
+            if (isStrArg) { // string value after "
                 sb.append("\"");
             }
         }
         String execJs = String.format(CALLBACK_JS_FORMAT, mInjectedName, mIndex, mIsPermanent, sb.toString());
         Log.d("JsCallBack", execJs);
-        mWebViewRef.get().loadUrl(execJs);
+        mWebViewRef.get().loadUrl(execJs); // call js
         mCouldGoOn = mIsPermanent > 0;
     }
 
