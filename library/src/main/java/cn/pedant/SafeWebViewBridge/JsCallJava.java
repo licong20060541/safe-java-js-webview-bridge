@@ -21,6 +21,7 @@ public class JsCallJava {
     private String mPreloadInterfaceJS;
     private Gson mGson;
 
+    // 1 create JsCallJava
     public JsCallJava (String injectedName, Class injectedCls) {
         try {
             if (TextUtils.isEmpty(injectedName)) {
@@ -87,10 +88,12 @@ public class JsCallJava {
         return sign;
     }
 
+    // 2 onProgressChanged, view.loadUrl(mJsCallJava.getPreloadInterfaceJS())
     public String getPreloadInterfaceJS () {
         return mPreloadInterfaceJS;
     }
 
+    // 3 onJsPrompt, result.confirm(mJsCallJava.call(view, message));
     public String call(WebView webView, String jsonStr) {
         if (!TextUtils.isEmpty(jsonStr)) {
             try {
