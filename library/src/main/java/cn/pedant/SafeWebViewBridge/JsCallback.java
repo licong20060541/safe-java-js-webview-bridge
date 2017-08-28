@@ -11,9 +11,10 @@ package cn.pedant.SafeWebViewBridge;
 import android.util.Log;
 import android.webkit.WebView;
 
-import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
 
 public class JsCallback {
+    // 调用 js
     private static final String CALLBACK_JS_FORMAT = "javascript:%s.callback(%d, %d %s);";
     private int mIndex;
     private boolean mCouldGoOn;
@@ -37,7 +38,7 @@ public class JsCallback {
         }
         StringBuilder sb = new StringBuilder();
         for (Object arg : args){
-            sb.append(",");
+            sb.append(","); //第一个也要添加'，'因为下面格式化时mIsPermanent才是真正第一个即 %d %s两者没有逗号
             boolean isStrArg = arg instanceof String;
             if (isStrArg) { // string value before "
                 sb.append("\"");

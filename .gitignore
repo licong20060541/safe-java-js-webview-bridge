@@ -1,0 +1,8 @@
+sample/sample.iml
+safe-java-js-webview-bridge.iml
+.gradle/
+.idea/
+build/
+library/build/
+library/library.iml
+
