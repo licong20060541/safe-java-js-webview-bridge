@@ -1,0 +1,13 @@
+补充： java 调用耗时js不会阻塞ui线程的
+    function show(info){
+        if (info) {
+            document.getElementById("shows").innerHTML = info;
+        } else {
+            document.getElementById("shows").innerHTML = 'start';
+            var i=0;
+            while (i++<2999999999){}
+            document.getElementById("shows").innerHTML = 'end' + String(i);
+        }
+    }
+    <!--setTimeout(function() { document.getElementById("shows").innerHTML = 'end'; }, 3000);-->
+
